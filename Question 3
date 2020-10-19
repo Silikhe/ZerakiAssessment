@@ -1,0 +1,40 @@
+
+
+ Table structure for table `courses`
+
+
+CREATE TABLE `course` (
+  `courseId` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `institution` int(11) NOT NULL
+)
+
+
+
+Table structure for table `institution`
+
+
+CREATE TABLE `institution` (
+  `institutionId` int(11) NOT NULL,
+  `name` int(11) NOT NULL
+)
+
+
+
+ Table structure for table `student`
+
+
+
+CREATE TABLE `student` (
+  `studentId` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `course` int(11) NOT NULL
+)
+
+
+
+
+  SELECT institution.name, course.name, COUNT(student.studentId) AS "NUMBER OF STUDENTS"
+ FROM((course
+ JOIN institution ON course.institution = institution.institutionId) AS "INSTITUTION NAME"
+ JOIN student ON course.courseId = student.course) AS "COURSE NAME";

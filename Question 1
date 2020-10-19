@@ -1,0 +1,26 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+   // write your code here
+        int K[] = {3,5,4,1};
+        int arrayLenght = K.length;
+        System.out.println(searchMissingNumber(K, arrayLenght));
+    }
+
+
+    static int searchMissingNumber(int ar[], int lengnth) {
+        int min = 0, b = lengnth - 1;
+        int mid = 0;
+
+        while ((b - min) > 1){
+            mid = (min + b) / 2;
+            if ((ar[min] - min) != (ar[mid] - mid))
+                b = mid;
+            else if ((ar[b] - b) != (ar[mid] - mid))
+                min = mid;
+        }
+        return (ar[mid] + 1);
+    }
+}
